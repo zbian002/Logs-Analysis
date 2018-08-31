@@ -6,5 +6,6 @@ most_popular_articles = """select articles.title, count(*) as num
                     from articles, log
                     where log.status = '200 OK'
                     and articles.slug = substring(log.path, 10)
+                    group by articles.title
                     order by num desc
                     limit 3;"""
